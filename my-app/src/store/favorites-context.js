@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 //local storage functions
 function setLocalStorage(key, value) {
@@ -27,7 +27,12 @@ const FavoritesContext = createContext({
 });
 
 export const FavoritesContextProvider = ({ children }) => {
-    const [allFavorites, setFavorites] = useState([])
+    const [allFavorites, setFavorites] = useState(() => getLocalStorage("allFavorites", []))
+
+
+    useEffect(() => {
+        setLocalStorage("allFavorites", allFavorites);
+    }, [allFavorites]);
 
     const addFavoriteHandler = (favoriteMeetup) => {
         setFavorites((previousFavorites) => {
