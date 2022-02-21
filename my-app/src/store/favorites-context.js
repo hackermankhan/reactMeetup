@@ -26,7 +26,7 @@ export const FavoritesContextProvider = ({ children }) => {
     }
 
     const context = {
-        allFavorites,
+        favorites: allFavorites,
         totalFavorites: allFavorites.length,
         addFavorite: addFavoriteHandler,
         removeFavorite: removeFavoriteHandler,
