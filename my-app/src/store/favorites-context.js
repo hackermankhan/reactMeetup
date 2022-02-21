@@ -28,7 +28,7 @@ const FavoritesContext = createContext({
 export const FavoritesContextProvider = ({ children }) => {
     const [allFavorites, setFavorites] = useState(() => getLocalStorage("allFavorites", []))
 
-
+    //update local storage
     useEffect(() => {
         setLocalStorage("allFavorites", allFavorites);
     }, [allFavorites]);
